@@ -42,11 +42,8 @@ async def _reload(ctx):
             bot.load_extension(extension)
             log.append("**%s** reloaded succesfully." % extension)
         except:
-            try:
-                bot.load_extension(extension)
-                log.append("**%s** loaded succesfully." % extension)
-            except:
-                log.append("**%s** couldn't be reloaded." % extension)
+            bot.load_extension(extension)
+            log.append("**%s** loaded succesfully." % extension)
 
     await ctx.send("\n".join(log))
     print("%s RELOADED THE BOTS MODULES." % ctx.author.name)

@@ -1,14 +1,25 @@
 import random
 
+import discord
 import numpy as np
+from cv2 import *
 from discord.ext import commands
+
+cam = VideoCapture(0)
 
 
 class MISC(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief="Roll a die. (1d6 by default)", usage="<amount>d<size>")
+    @commands.command(brief="Take a picture using Toaster's webcam.")
+    async def snapshot(self, ctx):
+        s, img = cam.read()
+        imwrite("img/webcam.jpg", img)
+        await ctx.send(file=discord.File("img/webcam.jpg"))
+        print("%s INVADED TOASTER'S PRIVACY" % ctx.author.name)
+
+    @commands.command(brief="Roll a die. (1d6 by default)")
     async def roll(self, ctx, type="1d6"):
         amount = int(type.split("d")[0])
         size = int(type.split("d")[1])

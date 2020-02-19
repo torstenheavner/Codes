@@ -62,7 +62,7 @@ class Colors(commands.Cog):
         await ctx.send("\n".join(log))
         print("%s UPDATED ROLE COLORS" % ctx.author.name)
 
-    @commands.command(brief="Add a color to the list.", usage="[person] [color]")
+    @commands.command(brief="Add a color to the list.")
     async def addcolor(self, ctx, person, color):
         with open("color.json", "r") as colorFile:
             ourColors = json.loads(colorFile.read())
@@ -74,7 +74,7 @@ class Colors(commands.Cog):
             colorFile.write(json.dumps(ourColors))
         print("%s ADDED A COLOR. %s - %s" % (ctx.author.name, person, color))
 
-    @commands.command(brief="Remove a color from the list.", usage="[person]")
+    @commands.command(brief="Remove a color from the list.")
     async def delcolor(self, ctx, person):
         with open("color.json", "r") as colorFile:
             ourColors = json.loads(colorFile.read())
@@ -86,7 +86,7 @@ class Colors(commands.Cog):
             colorFile.write(json.dumps(ourColors))
         print("%s REMOVED A COLOR. %s" % (ctx.author.name, person))
 
-    @commands.command(brief="Test a hexadecimal color.", usage="[color]")
+    @commands.command(brief="Test a hexadecimal color.")
     async def testcolor(self, ctx, color):
         w, h = 100, 100
         img = Image.new("RGB", (w, h), color=self.hexToRGB(color))
@@ -97,8 +97,7 @@ class Colors(commands.Cog):
         await ctx.send(file=discord.File("colors/test.png"))
         print("%s TESTED A COLOR. #%s" % (ctx.author.name, color))
 
-    @commands.command(brief="Get a sample subtitle using some color.",
-                      usage="[person or color] <message> <style> <type> <darkness>")
+    @commands.command(brief="Get a sample subtitle using some color.")
     async def samplesub(self, ctx, person, message="sample subtitle", style="top", type="colored", darkness="120"):
         with open("color.json", "r") as colorFile:
             ourColors = json.loads(colorFile.read())
@@ -162,7 +161,7 @@ class Colors(commands.Cog):
             await ctx.send(files=[discord.File("colors/subs/image1.png")])
         print("%s GOT A SAMPLE SUBTITLE. %s - %s" % (ctx.author.name, person, message))
 
-    @commands.command(brief="Change someone's color.", usage="[person] [color]")
+    @commands.command(brief="Change someone's color.")
     async def changecolor(self, ctx, person, color):
         with open("color.json", "r") as colorFile:
             ourColors = json.loads(colorFile.read())

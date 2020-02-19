@@ -3,5 +3,10 @@
     "brief": "Auto-send the word of the day",
     "desc": "Check every 24hrs for the word of the day from whatever that app I use it called, do they have a python API? Lame if they dont.",
     "author": "Toaster"
+  },
+  "lights": {
+    "brief": "Bot commands to turn toaster's lights on and off (and such)",
+    "desc": "yeah",
+    "author": "Toaster"
   }
 }

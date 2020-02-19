@@ -17,7 +17,7 @@ class Ideas(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(brief="List all ideas, or get info from one specific idea.", usage="<idea>")
+    @commands.command(brief="List all ideas, or get info from one specific idea.")
     async def ideas(self, ctx, idea=""):
         ideas = getIdeas()
         if idea == "":
@@ -37,7 +37,7 @@ class Ideas(commands.Cog):
                 await ctx.send("That idea doesn't exist!")
         print("%s LISTED ALL IDEAS." % ctx.author.name)
 
-    @commands.command(brief="Add a new idea.", usage="[name] [brief] [description]")
+    @commands.command(brief="Add a new idea.")
     async def idea(self, ctx, name="n/a", brief="n/a", desc="n/a"):
         ideas = getIdeas()
 
@@ -54,8 +54,7 @@ class Ideas(commands.Cog):
         setIdeas(ideas)
         print("%s ADDED A NEW IDEA. %s" % (ctx.author.name, name))
 
-    @commands.command(brief="Change information about an idea.",
-                      usage="[name] [name/brief/desc] [what to change it to]")
+    @commands.command(brief="Change information about an idea.")
     async def changeidea(self, ctx, name="n/a", which="n/a", new="n/a"):
         ideas = getIdeas()
 
@@ -77,7 +76,7 @@ class Ideas(commands.Cog):
         setIdeas(ideas)
         print("%s CHANGED AN IDAE. %s" % (ctx.author.name, name))
 
-    @commands.command(brief="Forget an idea.", usage="[name]")
+    @commands.command(brief="Forget an idea.")
     async def forget(self, ctx, name="n/a"):
         ideas = getIdeas()
 
