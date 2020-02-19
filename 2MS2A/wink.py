@@ -32,19 +32,18 @@ class wink(commands.Cog):
         print("%s JUST YIFFED %s. (%s)" % (ctx.author.name, user.name, rating))
 
     @commands.command(brief=";)")
-    async def gimme(self, ctx, *, tags=""):
+    async def gimme(self, ctx, rating="s", *, tags=""):
         tags = tags.split(" ")
-        if ctx.channel.is_nsfw():
-            results = yip.search.post(tags, rating="e", limit=10000)
+        results = yip.search.post(tags, rating=rating, limit=10000)
+        try:
             post = choice(results)
-            post.download("img/SPOILER_esix.png")
-            await ctx.send(file=discord.File("img/SPOILER_esix.png"))
-        else:
-            results = yip.search.post(tags, rating="s", limit=10000)
-            post = choice(results)
-            post.download("img/SPOILER_esix.png")
-            await ctx.send(file=discord.File("img/SPOILER_esix.png"))
-        print("%s GOT A%s IMAGE FROM ESIX." % (ctx.author.name, "N EXPLICIT" if ctx.channel.is_nsfw() else " SAFE"))
+            post.download("img/%sesix.png" % ("SPOILER_" if rating in ["e", "q"] else ""))
+            await ctx.send(file=discord.File("img/%sesix.png" % ("SPOILER_" if rating in ["e", "q"] else "")))
+        except IndexError:
+            await ctx.send("Those tags have no results!")
+        except:
+            await ctx.send("Something went wrong! Maybe the file was too big!")
+        print("%s GOT AN IMAGE FROM ESIX." % ctx.author.name)
 
 
 def setup(bot):
