@@ -8,5 +8,55 @@
     "brief": "Bot commands to turn toaster's lights on and off (and such)",
     "desc": "yeah",
     "author": "Toaster"
+  },
+  "levelling": {
+    "brief": "Level up system, like in mee6",
+    "desc": "rewards at different teirs?",
+    "author": "Toaster"
+  },
+  "string recall system": {
+    "brief": "Per-user pinned messages",
+    "desc": "system that allows for users to input strings of any length, give them a name, then fetch them later. useful for preserving lists and links without filling pins.",
+    "author": "crows"
+  },
+  "tweets": {
+    "brief": "gets tweets from someone",
+    "desc": "automatically fetches and posts all tweets from a set twitter user. should allow for toggling retweets, quotes, replies, etc.",
+    "author": "crows"
+  },
+  "alerts": {
+    "brief": "allows users to set reminders",
+    "desc": "pings users at an inputted time with a custom message",
+    "author": "crows"
+  },
+  "coins": {
+    "brief": "bot's currency system",
+    "desc": "fake currency system used by bot for various systems. possibly earned via level-up (see levelling).",
+    "author": "crows"
+  },
+  "random quoter": {
+    "brief": "takes a random message from the server and quotes it",
+    "desc": "g",
+    "author": "JONKKKK"
+  },
+  "gacha": {
+    "brief": "cute girls",
+    "desc": "allows users to play a gacha game using coins and tracks what they've pulled in the past. possibly illegal?",
+    "author": "crows"
+  },
+  "chainmail": {
+    "brief": "puts the spotlight on chainmail",
+    "desc": "sends a random user to a modeling runway wearing full blown chainmail",
+    "author": "crows"
+  },
+  "mute": {
+    "brief": "make jonk shut up",
+    "desc": "makes jonk shut up",
+    "author": "crows"
+  },
+  "poll_functionality": {
+    "brief": "add poll shit",
+    "desc": "steal all functionality from reactor on the last server",
+    "author": "GoldenPot8o"
   }
 }

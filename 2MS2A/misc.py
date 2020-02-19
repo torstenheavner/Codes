@@ -12,6 +12,16 @@ class MISC(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command(brief="Send someone a message, anonymously.")
+    async def message(self, ctx, person: discord.Member, message):
+        if person.dm_channel:
+            await person.dm_channel.send(message)
+        else:
+            await person.create_dm()
+            await person.dm_channel.send(message)
+        await ctx.send("**%s** messaged **%s**." % (ctx.author.name, person.name))
+        print("%s MESSAGED %s. (%s)" % (ctx.author.name, person.name, message))
+
     @commands.command(brief="Take a picture using Toaster's webcam.")
     async def snapshot(self, ctx):
         s, img = cam.read()
