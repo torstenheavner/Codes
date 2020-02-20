@@ -9,11 +9,6 @@
     "desc": "yeah",
     "author": "Toaster"
   },
-  "levelling": {
-    "brief": "Level up system, like in mee6",
-    "desc": "rewards at different teirs?",
-    "author": "Toaster"
-  },
   "string recall system": {
     "brief": "Per-user pinned messages",
     "desc": "system that allows for users to input strings of any length, give them a name, then fetch them later. useful for preserving lists and links without filling pins.",
@@ -58,5 +53,10 @@
     "brief": "add poll shit",
     "desc": "steal all functionality from reactor on the last server",
     "author": "GoldenPot8o"
+  },
+  "Paginated Help": {
+    "brief": "Multi-page help message.",
+    "desc": "Like with some other bots where you can change help pages or categories by reacting.",
+    "author": "Alterae"
   }
 }

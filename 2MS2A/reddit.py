@@ -54,7 +54,7 @@ class Reddit(commands.Cog):
             posts.append([subm.title, subm.selftext])
         post = choice(posts)
         await ctx.send("%s" % (post[0] if randint(0, 1) == 1 else post[1]))
-        print("%s GOT A RANDOM JOKE." % (ctx.author.name))
+        print("%s GOT A RANDOM JOKE." % ctx.author.name)
 
     @commands.command(brief="Combine a joke steup and punchline.")
     async def stitch(self, ctx):
@@ -69,7 +69,7 @@ class Reddit(commands.Cog):
             await ctx.send("%s\n%s" % (post1[0], post2[1]))
         except:
             await ctx.send("The joke was too long!")
-        print("%s COMBINED RANDOM JOKES." % (ctx.author.name))
+        print("%s COMBINED RANDOM JOKES." % ctx.author.name)
 
 
 def setup(bot):
