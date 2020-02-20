@@ -22,6 +22,7 @@ class Levels(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.ac = randint(1, 20)
+        self.hell_ac.start()
 
     @commands.Cog.listener()
     async def on_message(self, message):
