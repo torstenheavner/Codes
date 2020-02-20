@@ -60,8 +60,7 @@ async def _reload(ctx, cog="all"):
 
 
 async def background_task():
-    while 1:
-        await a.sleep(1)
+    await a.sleep(60)
 
 
 with open("T:/all/2ms2a_creds.txt", "r") as token:

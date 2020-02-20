@@ -39,24 +39,24 @@
     "desc": "allows users to play a gacha game using coins and tracks what they've pulled in the past. possibly illegal?",
     "author": "crows"
   },
-  "chainmail": {
-    "brief": "puts the spotlight on chainmail",
-    "desc": "sends a random user to a modeling runway wearing full blown chainmail",
-    "author": "crows"
-  },
   "mute": {
     "brief": "make jonk shut up",
-    "desc": "makes jonk shut up",
+    "desc": "maybe make this use the ac/roll thing like in <#680075322884096026> , could be kinda funny. plus, if you've talked a ton and get muted, you can still kinda send messages",
     "author": "crows"
-  },
-  "poll_functionality": {
-    "brief": "add poll shit",
-    "desc": "steal all functionality from reactor on the last server",
-    "author": "GoldenPot8o"
   },
   "Paginated Help": {
     "brief": "Multi-page help message.",
     "desc": "Like with some other bots where you can change help pages or categories by reacting.",
     "author": "Alterae"
+  },
+  "leaderboard": {
+    "brief": "levels leaderboard",
+    "desc": "yeah",
+    "author": "Toaster"
+  },
+  "polls": {
+    "brief": "add poll shit",
+    "desc": "steal all functionality from reactor on the last server",
+    "author": "GoldenPot8o"
   }
 }
