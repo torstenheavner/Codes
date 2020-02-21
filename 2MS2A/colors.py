@@ -18,7 +18,7 @@ class Colors(commands.Cog):
         with open("color.json", "r") as colorFile:
             ourColors = json.loads(colorFile.read())
 
-        font = ImageFont.truetype("fonts/minecraft.otf", 48)
+        font = ImageFont.truetype("fonts/minecraft.ttf", 48)
 
         w, h = 500, 100
         color = (255, 255, 255)

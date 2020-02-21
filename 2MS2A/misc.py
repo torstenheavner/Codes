@@ -20,6 +20,13 @@ class MISC(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    @commands.command(brief="Start a poll.")
+    async def poll(self, ctx, *, things=""):
+        reactions = ["👍", "👎"]
+        for reaction in reactions:
+            await ctx.message.add_reaction(reaction)
+        print("%s STARTED A POLL." % ctx.author.name)
+
     @commands.command(brief="Send someone a message, anonymously.")
     async def message(self, ctx, person: discord.Member, message):
         if person.dm_channel:
