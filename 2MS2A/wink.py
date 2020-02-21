@@ -34,13 +34,17 @@ class wink(commands.Cog):
         print("%s JUST YIFFED %s. (%s)" % (ctx.author.name, person.name, rating))
 
     @commands.command(brief=";)")
-    async def gimme(self, ctx, rating="s", *, tags=""):
+    async def gimme(self, ctx, amount: int = 1, rating="s", *, tags=""):
         tags = tags.split(" ")
+        if amount > 5:
+            return await ctx.send("You can only get 5 images maximum!")
         results = yip.search.post(tags, rating=rating, limit=10000)
         try:
-            post = choice(results)
-            post.download("img/%sesix.png" % ("SPOILER_" if rating in ["e", "q"] else ""))
-            await ctx.send(file=discord.File("img/%sesix.png" % ("SPOILER_" if rating in ["e", "q"] else "")))
+            for i in range(amount):
+                post = choice(results)
+                post.download("img/%sesix%s.png" % ("SPOILER_" if rating in ["e", "q"] else "", i))
+            images = [discord.File("img/%sesix%s.png" % ("SPOILER_" if rating in ["e", "q"] else "", i)) for i in range(amount)]
+            await ctx.send(files=images)
         except IndexError:
             await ctx.send("Those tags have no results!")
         except:

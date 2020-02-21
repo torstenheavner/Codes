@@ -18,6 +18,7 @@ def setData(_dict):
 levelxp = [0, 300, 900, 2700, 6500, 14000, 23000, 34000, 48000, 64000, 85000, 100000, 120000, 140000, 165000, 195000, 225000, 265000, 305000, 355000]
 
 
+# noinspection PyCallingNonCallable
 class DND(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -77,12 +78,19 @@ class DND(commands.Cog):
 
                 if message.channel.name == "hell":
                     roll = randint(1, 20) + bonus
-                    if roll < self.ac:
+                    if (roll < self.ac or roll - bonus == 1) and roll - bonus != 20:
                         await message.delete()
                         await message.channel.send("(%s > %s+%s) **%s** tried to send a message, but failed the roll!" % (self.ac, roll - bonus, bonus, message.author.name))
+                        if roll - bonus == 1:
+                            await message.channel.send("**%s just nat 1'd!**" % message.author.name)
                     else:
                         await message.delete()
                         await message.channel.send("(%s < %s+%s) **%s**: %s" % (self.ac, roll - bonus, bonus, message.author.name, message.content))
+                        if roll - bonus == 20:
+                            await message.channel.send("**%s just nat 20'd!**" % message.author.name)
+                        data[message.author.name]["xp"] += self.ac
+                        if roll - bonus > 10:
+                            data[message.author.name]["xp"] += randint(0, roll)
 
                 else:
                     try:
@@ -95,26 +103,48 @@ class DND(commands.Cog):
                         if word in message.content.lower() and not (message.content.startswith("2m.unban") or message.content.startswith("2m.ban")):
                             data[message.author.name]["health"] -= 1
                             await message.channel.send("Uh oh! You fucking idiot. You just said '%s'.\n\nDie." % word)
+                            print("%s USED A BANNED WORD." % message.author.name)
 
                     if data[message.author.name]["xp"] >= levelxp[level]:
                         data[message.author.name]["level"] += 1
                         await message.channel.send("**%s** levelled up to level %s!" % (message.author.name, data[message.author.name]["level"]))
+                        print("%s LEVELLED UP." % message.author.name)
 
                     if data[message.author.name]["health"] <= 0:
                         data[message.author.name] = self.base
                         await message.channel.send("Oop, **%s** is dead. Now you gotta reroll stats!" % message.author.name)
-
+                        print("%s DIED." % message.author.name)
                 setData(data)
             except:
                 pass
 
     @tasks.loop(minutes=5)
     async def hell_ac(self):
-        hell = discord.utils.get(self.bot.get_guild(677689511525875715).channels, name="hell")
+        bots = discord.utils.get(self.bot.get_guild(677689511525875715).channels, name="bots")
         if randint(1, 100) <= 33:
             ac = randint(1, 20)
             self.ac = ac
-            await hell.send("__**Hell's AC is now %s!**__" % ac)
+            await bots.send("__**Hell's AC is now %s!**__" % ac)
+            print("HELL'S AC HAS BEEN REROLLED. (%s)" % self.ac)
+
+    @commands.command(brief="Get the 10 highest levelled people in the server.")
+    async def leaderboard(self, ctx):
+        data = getData()
+        scores = {"": 0}
+        finals = {}
+        for person in data:
+            if person != "banned words":
+                scores[person] = data[person]["xp"]
+        for i in range(10):
+            max = ""
+            for j in scores:
+                if scores[j] > scores[max]:
+                    max = j
+            finals[max] = scores[max]
+            del scores[max]
+        final = ["**%s** - %sxp" % (person, finals[person]) for person in finals]
+        await ctx.send("\n".join(final))
+        print("%s GOT THE XP LEADERBOARD." % ctx.author.name)
 
     @commands.command(brief="Roll up your stats.")
     async def rollstats(self, ctx, *, order):
@@ -144,11 +174,13 @@ class DND(commands.Cog):
             final.append("%s -> %s (%s)" % (order[i], num, self.bonuses[tempnum] if num < 10 else ("+%s" % self.bonuses[tempnum])))
             data[ctx.author.name]["stats"][order[i]] = {"base": num, "mod": self.bonuses[tempnum]}
         await ctx.send("\n".join(final))
+        print("%s ROLLED THEIR STATS." % ctx.author.name)
         setData(data)
 
     @commands.command(brief="Get the AC of hell.")
     async def getac(self, ctx):
         await ctx.send("Hell's AC is currently **%s**!" % self.ac)
+        print("%s GOT HELL'S CURRENT AC." % ctx.author.name)
 
     @commands.command(brief="Get information on a level.")
     async def levelinfo(self, ctx, level: int):

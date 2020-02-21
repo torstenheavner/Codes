@@ -40,6 +40,7 @@ class MISC(commands.Cog):
         data = getData()
         data["banned words"].append(word.lower())
         await ctx.send("'%s' has been banned!" % word)
+        print("%s BANNED A WORD. (%s)" % (ctx.author.name, word.lower()))
         setData(data)
 
     @commands.command(brief="Unban a word.")
@@ -48,6 +49,7 @@ class MISC(commands.Cog):
         if word.lower() in data["banned words"]:
             del data["banned words"][data["banned words"].index(word.lower())]
             await ctx.send("Word successfully unbanned!")
+            print("%s UNBANNED A WORD. (%s)" % (ctx.author.name, word.lower()))
             setData(data)
         else:
             await ctx.send("That word isn't banned!")
