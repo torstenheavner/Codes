@@ -59,7 +59,7 @@ class DND(commands.Cog):
 
                 if message.channel.name == "hell":
                     roll = randint(1, 20) + bonus
-                    if roll <= self.ac:
+                    if roll < self.ac:
                         await message.delete()
                         await message.channel.send("(%s > %s+%s) **%s** tried to send a message, but failed the roll!" % (self.ac, roll - bonus, bonus, message.author.name))
                     else:
