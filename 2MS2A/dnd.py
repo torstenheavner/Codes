@@ -37,6 +37,24 @@ class DND(commands.Cog):
                 "cha": {"base": 0, "mod": 0}
             }
         }
+        self.bonuses = {
+            0: -5,
+            2: -4,
+            4: -3,
+            6: -2,
+            8: -1,
+            10: 0,
+            12: 1,
+            14: 2,
+            16: 3,
+            18: 4,
+            20: 5,
+            22: 6,
+            24: 7,
+            26: 8,
+            28: 9,
+            30: 10
+        }
         self.hell_ac.start()
 
     def cog_unload(self):
@@ -123,28 +141,9 @@ class DND(commands.Cog):
             tempnum = allrolls[i]
             if tempnum % 2 == 1:
                 tempnum -= 1
-            bonuses = {
-                0: -5,
-                2: -4,
-                4: -3,
-                6: -2,
-                8: -1,
-                10: 0,
-                12: 1,
-                14: 2,
-                16: 3,
-                18: 4,
-                20: 5,
-                22: 6,
-                24: 7,
-                26: 8,
-                28: 9,
-                30: 10
-            }
-            final.append("%s -> %s (%s)" % (order[i], num, bonuses[tempnum] if num < 10 else ("+%s" % bonuses[tempnum])))
-            data[ctx.author.name]["stats"][order[i]] = {"base": num, "mod": bonuses[tempnum]}
+            final.append("%s -> %s (%s)" % (order[i], num, self.bonuses[tempnum] if num < 10 else ("+%s" % self.bonuses[tempnum])))
+            data[ctx.author.name]["stats"][order[i]] = {"base": num, "mod": self.bonuses[tempnum]}
         await ctx.send("\n".join(final))
-
         setData(data)
 
     @commands.command(brief="Get the AC of hell.")
