@@ -97,8 +97,12 @@ class Colors(commands.Cog):
         await ctx.send(file=discord.File("colors/test.png"))
         print("%s TESTED A COLOR. #%s" % (ctx.author.name, color))
 
+    @commands.command(brief="Get a list of all fonts.")
+    async def fonts(self, ctx):
+        await ctx.send("**All fonts:**\ncarter\nchewy\nknewave\nminecraft (default)\ntrade")
+
     @commands.command(brief="Get a sample subtitle using some color.")
-    async def samplesub(self, ctx, person, message="sample subtitle", style="top", type="colored", darkness="120"):
+    async def samplesub(self, ctx, person, font="minecraft", message="sample subtitle", style="top", type="colored", darkness="120"):
         with open("color.json", "r") as colorFile:
             ourColors = json.loads(colorFile.read())
 
@@ -113,7 +117,7 @@ class Colors(commands.Cog):
         if style == "":
             style = "top"
 
-        font = ImageFont.truetype("fonts/minecraft.otf", 64)
+        font = ImageFont.truetype("fonts/%s.ttf" % font, 64)
         offset = 4
         images = [Image.open("sample_backgrounds/mc1.png", "r")]
 

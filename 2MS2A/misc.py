@@ -1,11 +1,19 @@
+import json
 import random
 
 import discord
 import numpy as np
-from cv2 import *
 from discord.ext import commands
 
-cam = VideoCapture(0)
+
+def getData():
+    with open("data.json", "r") as levelsFile:
+        return json.loads(levelsFile.read())
+
+
+def setData(_dict):
+    with open("data.json", "w") as levelsFile:
+        levelsFile.write(json.dumps(_dict))
 
 
 class MISC(commands.Cog):
@@ -22,12 +30,27 @@ class MISC(commands.Cog):
         await ctx.send("**%s** messaged **%s**." % (ctx.author.name, person.name))
         print("%s MESSAGED %s. (%s)" % (ctx.author.name, person.name, message))
 
-    @commands.command(brief="Take a picture using Toaster's webcam.")
-    async def snapshot(self, ctx):
-        s, img = cam.read()
-        imwrite("img/webcam.jpg", img)
-        await ctx.send(file=discord.File("img/webcam.jpg"))
-        print("%s INVADED TOASTER'S PRIVACY" % ctx.author.name)
+    @commands.command(brief="Get a random XKCD comic.")
+    async def xkcd(self, ctx):
+        link = "https://xkcd.com/%s" % random.randint(1, 2270)
+        await ctx.send(link)
+
+    @commands.command(brief="Add a banned word.")
+    async def ban(self, ctx, word):
+        data = getData()
+        data["banned words"].append(word.lower())
+        await ctx.send("'%s' has been banned!" % word)
+        setData(data)
+
+    @commands.command(brief="Unban a word.")
+    async def unban(self, ctx, word):
+        data = getData()
+        if word.lower() in data["banned words"]:
+            del data["banned words"][data["banned words"].index(word.lower())]
+            await ctx.send("Word successfully unbanned!")
+            setData(data)
+        else:
+            await ctx.send("That word isn't banned!")
 
     @commands.command(brief="Roll a die. (1d6 by default)")
     async def roll(self, ctx, type="1d6"):

@@ -1,8 +1,11 @@
 import asyncio as a
-import os
 import sys
 
+import discord
+from cv2 import *
 from discord.ext import commands
+
+cam = VideoCapture(0)
 
 
 def clear(): return os.system("cls")
@@ -29,6 +32,14 @@ async def on_ready():
 async def ping(ctx):
     await ctx.send("Pong!")
     print("%s PINGED THE BOT." % ctx.author.name)
+
+
+@bot.command(brief="Take a picture using Toaster's webcam.")
+async def snapshot(ctx):
+    s, img = cam.read()
+    imwrite("img/webcam.jpg", img)
+    await ctx.send(file=discord.File("img/webcam.jpg"))
+    print("%s INVADED TOASTER'S PRIVACY" % ctx.author.name)
 
 
 @bot.command(name="reload", brief="Reload all of the bots cogs.")
