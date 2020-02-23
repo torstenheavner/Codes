@@ -80,12 +80,13 @@ class DND(commands.Cog):
                     roll = randint(1, 20) + bonus
                     if (roll < self.ac or roll - bonus == 1) and roll - bonus != 20:
                         await message.delete()
-                        await message.channel.send("(%s > %s+%s) **%s** tried to send a message, but failed the roll!" % (self.ac, roll - bonus, bonus, message.author.name))
+                        await message.channel.send("**%s** tried to send a message, but failed the roll!" % message.author.name)
                         if roll - bonus == 1:
                             await message.channel.send("**%s just nat 1'd!**" % message.author.name)
                     else:
                         await message.delete()
-                        await message.channel.send("(%s < %s+%s) **%s**: %s" % (self.ac, roll - bonus, bonus, message.author.name, message.content))
+                        # await message.channel.send("(%s < %s+%s) **%s**: %s" % (self.ac, roll - bonus, bonus, message.author.name, message.content))
+                        await message.channel.send("**%s**: %s" % (message.author.name, message.content))
                         if roll - bonus == 20:
                             await message.channel.send("**%s just nat 20'd!**" % message.author.name)
                         data[message.author.name]["xp"] += self.ac
@@ -124,7 +125,7 @@ class DND(commands.Cog):
         if randint(1, 100) <= 33:
             ac = randint(1, 20)
             self.ac = ac
-            await bots.send("__**Hell's AC is now %s!**__" % ac)
+            # await bots.send("__**Hell's AC is now %s!**__" % ac)
             print("HELL'S AC HAS BEEN REROLLED. (%s)" % self.ac)
 
     @commands.command(brief="Get the 10 highest levelled people in the server.")
@@ -177,10 +178,10 @@ class DND(commands.Cog):
         print("%s ROLLED THEIR STATS." % ctx.author.name)
         setData(data)
 
-    @commands.command(brief="Get the AC of hell.")
-    async def getac(self, ctx):
-        await ctx.send("Hell's AC is currently **%s**!" % self.ac)
-        print("%s GOT HELL'S CURRENT AC." % ctx.author.name)
+    # @commands.command(brief="Get the AC of hell.")
+    # async def getac(self, ctx):
+    #     await ctx.send("Hell's AC is currently **%s**!" % self.ac)
+    #     print("%s GOT HELL'S CURRENT AC." % ctx.author.name)
 
     @commands.command(brief="Get information on a level.")
     async def levelinfo(self, ctx, level: int):

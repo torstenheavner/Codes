@@ -1,4 +1,5 @@
 from random import choice
+from urllib.error import HTTPError
 
 import discord
 import yippi as yip
@@ -45,11 +46,21 @@ class wink(commands.Cog):
                 post.download("img/%sesix%s.png" % ("SPOILER_" if rating in ["e", "q"] else "", i))
             images = [discord.File("img/%sesix%s.png" % ("SPOILER_" if rating in ["e", "q"] else "", i)) for i in range(amount)]
             await ctx.send(files=images)
+            print("%s GOT AN IMAGE FROM E6." % ctx.author.name)
         except IndexError:
             await ctx.send("Those tags have no results!")
+            print("%s TRIED TO GET AN IMAGE FROM E6, BUT GOT NO RESULTS." % ctx.author.name)
+        except HTTPError:
+            await ctx.send("Got an HTTPError! This usually means the bot can't access E6 right now.")
+            print("%s TRIED TO GET AN IMAGE FROM E6, BUT THE BOT COULDNT ACCESS E6." % ctx.author.name)
         except:
-            await ctx.send("Something went wrong! Maybe the file was too big?")
-        print("%s GOT AN IMAGE FROM ESIX." % ctx.author.name)
+            await ctx.send("The file was too big?")
+            print("%s TRIED TO GET AN IMAGE FROM E6, BUT THE FILE WAS TOO BIG." % ctx.author.name)
+
+    @commands.command(brief="")
+    async def fuck(self, ctx):
+        await ctx.send("yes")
+        print("%s fuck" % ctx.author.name)
 
 
 def setup(bot):

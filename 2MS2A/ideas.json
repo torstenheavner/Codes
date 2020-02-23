@@ -53,5 +53,15 @@
     "brief": "add poll shit",
     "desc": "steal all functionality from reactor on the last server",
     "author": "GoldenPot8o"
+  },
+  "color bot functionality": {
+    "brief": "add the color bot code into this bot",
+    "desc": "it makes sense because we already have color stuff",
+    "author": "JONKKKK"
+  },
+  "file editing": {
+    "brief": "edit the bots code from discord (this is stupid)",
+    "desc": "stuff like 2m.showlines [file] [lines from file to show] and 2m.editline [file] [line] [what to edit it to be]. why would you make this",
+    "author": "Toaster"
   }
 }
