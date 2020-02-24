@@ -59,7 +59,7 @@ class wink(commands.Cog):
 
     @commands.command(brief="")
     async def fuck(self, ctx):
-        await ctx.send(choice(["yes.","you know what? maybe i will.","not today.","maybe.","make me."," ."]))
+        await ctx.send(choice(["yes.", "you know what? maybe i will.", "not today.", "maybe.", "make me.", " ."]))
         print("%s fuck" % ctx.author.name)
 
 
