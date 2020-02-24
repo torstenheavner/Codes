@@ -19,6 +19,11 @@ class nat(commands.Cog):
     async def disagree(self, ctx, person: discord.Member):
         self.people.append(person.name)
         await ctx.send(person.name + " is now invalid")
+        
+    @commands.command(brief="validate people")
+    async def agree(self, ctx, person: discord.Member):
+        self.people.remove(person.name)
+        await ctx.send(person.name + " is now valid")
 
 
 def setup(bot):
