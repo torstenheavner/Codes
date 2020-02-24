@@ -3,6 +3,9 @@ import random
 from discord.ext import commands
 
 
+### CHANGE "example" IN THE NEXT LINE TO WHATEVER YOU WANT YOUR CATEGORY TO BE CALLED ###
+### YOU MUST ALSO CHANGE IT AT THE END OF THE FILE ###
+### THEN, ADD THE NAME OF THE FILE TO cogs.txt ###
 class example(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
