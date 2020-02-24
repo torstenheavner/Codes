@@ -68,5 +68,15 @@
     "brief": "messages that are upvoted enough get pinned, and messages that are downvoted enough get deleted",
     "desc": "react with \u2b06\ufe0f and \u2b07\ufe0f to upvote or downvote messages",
     "author": "JONKKKK"
+  },
+  "camera on/off": {
+    "brief": "disable camera so that i can actually record my webcam",
+    "desc": "yeah basically just like yeah",
+    "author": "Toaster"
+  },
+  "2MS2A_B": {
+    "brief": "2MS2A beta, for rewriting the bot",
+    "desc": "make a seperate bot account that's just for rewriting the bot, just a beta for the rewrite. just so the current bot still works but i can also test the rewrite",
+    "author": "Toaster"
   }
 }
