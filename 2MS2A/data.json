@@ -1,6 +1,6 @@
 {
   "Toaster": {
-    "xp": 7859,
+    "xp": 8147,
     "level": 5,
     "health": 20,
     "stats": {
@@ -31,7 +31,7 @@
     }
   },
   "JONKKKK": {
-    "xp": 2333,
+    "xp": 2470,
     "level": 3,
     "health": 20,
     "stats": {
@@ -62,7 +62,7 @@
     }
   },
   "GoldenPot8o": {
-    "xp": 2584,
+    "xp": 2677,
     "level": 3,
     "health": 20,
     "stats": {
@@ -93,7 +93,7 @@
     }
   },
   "5a+ch31.exe": {
-    "xp": 708,
+    "xp": 745,
     "level": 2,
     "health": 20,
     "stats": {
@@ -124,7 +124,7 @@
     }
   },
   "Alterae": {
-    "xp": 2091,
+    "xp": 2147,
     "level": 3,
     "health": 19,
     "stats": {
@@ -217,7 +217,7 @@
     }
   },
   "crows": {
-    "xp": 1480,
+    "xp": 1505,
     "level": 3,
     "health": 20,
     "stats": {
@@ -316,7 +316,7 @@
     }
   },
   "VeryWhiteMail": {
-    "xp": 290,
+    "xp": 296,
     "level": 1,
     "health": 20,
     "class": "",
