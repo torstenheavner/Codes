@@ -63,5 +63,10 @@
     "brief": "edit the bots code from discord (this is stupid)",
     "desc": "stuff like 2m.showlines [file] [lines from file to show] and 2m.editline [file] [line] [what to edit it to be]. why would you make this",
     "author": "Toaster"
+  },
+  "upvoting/downvoting": {
+    "brief": "messages that are upvoted enough get pinned, and messages that are downvoted enough get deleted",
+    "desc": "react with \u2b06\ufe0f and \u2b07\ufe0f to upvote or downvote messages",
+    "author": "JONKKKK"
   }
 }

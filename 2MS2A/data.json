@@ -1,6 +1,6 @@
 {
   "Toaster": {
-    "xp": 7825,
+    "xp": 7859,
     "level": 5,
     "health": 20,
     "stats": {
@@ -31,7 +31,7 @@
     }
   },
   "JONKKKK": {
-    "xp": 2278,
+    "xp": 2333,
     "level": 3,
     "health": 20,
     "stats": {
@@ -62,7 +62,7 @@
     }
   },
   "GoldenPot8o": {
-    "xp": 2555,
+    "xp": 2584,
     "level": 3,
     "health": 20,
     "stats": {
@@ -124,7 +124,7 @@
     }
   },
   "Alterae": {
-    "xp": 2013,
+    "xp": 2091,
     "level": 3,
     "health": 19,
     "stats": {
@@ -155,7 +155,7 @@
     }
   },
   "Zildin": {
-    "xp": 1094,
+    "xp": 1097,
     "level": 3,
     "health": 20,
     "stats": {
@@ -217,7 +217,7 @@
     }
   },
   "crows": {
-    "xp": 1469,
+    "xp": 1480,
     "level": 3,
     "health": 20,
     "stats": {
@@ -248,7 +248,7 @@
     }
   },
   "Kronkk": {
-    "xp": 397,
+    "xp": 411,
     "level": 2,
     "health": 20,
     "stats": {
@@ -382,7 +382,7 @@
     }
   },
   "Blanxy": {
-    "xp": 41,
+    "xp": 45,
     "level": 1,
     "health": 20,
     "class": "",
