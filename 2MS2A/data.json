@@ -1,6 +1,6 @@
 {
   "Toaster": {
-    "xp": 8687,
+    "xp": 9181,
     "level": 5,
     "health": 20,
     "stats": {
@@ -31,7 +31,7 @@
     }
   },
   "JONKKKK": {
-    "xp": 2583,
+    "xp": 2598,
     "level": 3,
     "health": 20,
     "stats": {
@@ -124,7 +124,7 @@
     }
   },
   "Alterae": {
-    "xp": 2405,
+    "xp": 2406,
     "level": 3,
     "health": 19,
     "stats": {
@@ -155,7 +155,7 @@
     }
   },
   "Zildin": {
-    "xp": 1097,
+    "xp": 1104,
     "level": 3,
     "health": 20,
     "stats": {
@@ -283,7 +283,7 @@
     "joe"
   ],
   "Tuna": {
-    "xp": 637,
+    "xp": 650,
     "level": 2,
     "health": 20,
     "class": "",
@@ -382,7 +382,7 @@
     }
   },
   "Blanxy": {
-    "xp": 45,
+    "xp": 46,
     "level": 1,
     "health": 20,
     "class": "",
